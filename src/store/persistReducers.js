@@ -4,9 +4,9 @@ import { persistReducer } from 'redux-persist';
 export default reducers => {
   const persistedReducer = persistReducer(
     {
-      key: 'gobarber',
+      key: 'meetup',
       storage,
-      whitelist: [''],
+      whitelist: ['auth'],
     },
     reducers
   );

@@ -9,12 +9,10 @@ import { store } from '~/store';
 
 export default function RouteWrapper({
   component: Component,
-  isPrivate = false,
+  isPrivate,
   ...rest
 }) {
-  // const { signed } = store.getState().auth;
-
-  const signed = false;
+  const { signed } = store.getState().auth;
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;

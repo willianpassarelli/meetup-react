@@ -39,4 +39,36 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+/**
+  * Edit Styles toasts
+  */
+
+.Toastify__toast-container {
+    width: 320px;
+  }
+
+  .Toastify__toast--default {
+    background: #fff;
+    color: #aaa;
+  }
+
+  .Toastify__toast--info {
+    background: #3498db;
+  }
+
+  .Toastify__toast--success {
+    background: #07bc0c;
+  }
+
+  .Toastify__toast--warning {
+    background: #f1c40f;
+  }
+
+  .Toastify__toast--error {
+    background: #7159c1;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font: 14px Roboto, sans-serif;
+  }
 `;
