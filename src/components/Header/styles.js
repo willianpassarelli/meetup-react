@@ -3,13 +3,13 @@ import { lighten } from 'polished';
 
 export const Container = styled.div`
   height: 92px;
-  background: #18161f;
-  padding: 0 30px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0 20px;
 `;
 
 export const Content = styled.div`
   height: 92px;
-  max-width: 900px;
+  max-width: 940px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
