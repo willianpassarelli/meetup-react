@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
 
 import api from '~/services/api';
@@ -7,18 +8,24 @@ import api from '~/services/api';
 import { Container, List } from './styles';
 
 export default function Dashboard() {
-  const [meetup, setMeetup] = useState([]);
+  const [organizing, setOrganizing] = useState([]);
 
   useEffect(() => {
-    async function loadOrganizing() {
+    async function loadMeetups() {
       const response = await api.get('organizing');
 
-      const data = response.data.map(list => list);
-
-      setMeetup(data);
+      const data = response.data.map(meetup => {
+        return {
+          ...meetup,
+          date: format(parseISO(meetup.date), "d 'de' MMMM', às' HH'h'", {
+            locale: pt,
+          }),
+        };
+      });
+      setOrganizing(data);
     }
 
-    loadOrganizing();
+    loadMeetups();
   }, []);
 
   return (
@@ -34,11 +41,11 @@ export default function Dashboard() {
       </header>
 
       <ul>
-        {meetup.map(list => (
-          <List key={list.title}>
-            <strong>{list.title}</strong>
+        {organizing.map(date => (
+          <List key={date.title}>
+            <strong>{date.title}</strong>
             <div>
-              <span>{list.date}</span>
+              <span>{date.date}</span>
               <MdKeyboardArrowRight size={20} color="#fff" />
             </div>
           </List>
