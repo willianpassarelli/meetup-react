@@ -31,7 +31,7 @@ export default function Header() {
             <Link to="/profile">Meu perfil</Link>
           </div>
           <button type="submit" onClick={handleSignOut}>
-            Sair
+            <strong>Sair</strong>
           </button>
         </Profile>
       </Content>

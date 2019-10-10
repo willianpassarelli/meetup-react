@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
@@ -24,8 +25,8 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  body, input, button {
-    font: 14px 'Roboto', sans-serif;
+  body, input, button, textarea {
+    font: 16px 'Roboto', sans-serif;
   }
 
   a {
@@ -40,35 +41,4 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-/**
-  * Edit Styles toasts
-  */
-
-.Toastify__toast-container {
-    width: 320px;
-  }
-
-  .Toastify__toast--default {
-    background: #fff;
-    color: #aaa;
-  }
-
-  .Toastify__toast--info {
-    background: #3498db;
-  }
-
-  .Toastify__toast--success {
-    background: #07bc0c;
-  }
-
-  .Toastify__toast--warning {
-    background: #f1c40f;
-  }
-
-  .Toastify__toast--error {
-    background: #7159c1;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font: 14px Roboto, sans-serif;
-  }
 `;

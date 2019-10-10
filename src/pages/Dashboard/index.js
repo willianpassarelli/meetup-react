@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
@@ -32,12 +33,14 @@ export default function Dashboard() {
     <Container>
       <header>
         <strong>Meus meetups</strong>
-        <button type="button">
-          <div>
-            <MdAddCircleOutline size={20} color="#fff" />
-            Novo meetup
-          </div>
-        </button>
+        <Link to="/meetup">
+          <button type="button">
+            <div>
+              <MdAddCircleOutline size={20} color="#fff" />
+              <strong>Novo meetup</strong>
+            </div>
+          </button>
+        </Link>
       </header>
 
       <ul>
