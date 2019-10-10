@@ -35,7 +35,7 @@ export default function Profile() {
         <button type="submit">
           <div>
             <MdAddCircleOutline size={20} color="#fff" />
-            Salvar perfil
+            <strong>Salvar perfil</strong>
           </div>
         </button>
       </Form>
