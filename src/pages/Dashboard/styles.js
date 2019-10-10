@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
   max-width: 940px;
@@ -18,39 +18,8 @@ export const Container = styled.div`
       font-size: 32px;
       font-weight: bold;
     }
-
-    button {
-      margin-top: 10px;
-      align-self: flex-end;
-      height: 42px;
-      width: 172px;
-      background: #f94d6a;
-      font-weight: bold;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
-      font-size: 16px;
-      transition: background 0.2s;
-
-      &:hover {
-        background: ${darken(0.05, '#f94d6a')};
-      }
-
-      div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        strong {
-          font-size: 16px;
-        }
-
-        svg {
-          margin-right: 10px;
-        }
-      }
-    }
   }
+
   ul {
     display: flex;
     margin-top: 50px;
