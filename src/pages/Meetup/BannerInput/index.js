@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 import { MdCameraAlt } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
@@ -35,7 +36,7 @@ export default function BannerInput() {
       setFile(id);
       setPreview(url);
     } catch (err) {
-      console.tron.log('@err', err.menssage);
+      toast.error('Erro ao carregar imagem');
     }
   }
 

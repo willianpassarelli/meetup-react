@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 
-import { MdAddCircleOutline } from 'react-icons/md';
+import Button from '~/components/Button';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
@@ -32,12 +32,7 @@ export default function Profile() {
           placeholder="Confirmação de senha"
         />
 
-        <button type="submit">
-          <div>
-            <MdAddCircleOutline size={20} color="#fff" />
-            <strong>Salvar perfil</strong>
-          </div>
-        </button>
+        <Button text="Salvar perfil" />
       </Form>
     </Container>
   );

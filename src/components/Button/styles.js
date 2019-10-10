@@ -24,6 +24,10 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
 
+      strong {
+        font-size: 16px;
+      }
+
       svg {
         margin-right: 10px;
       }
