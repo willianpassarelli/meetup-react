@@ -43,13 +43,15 @@ export default function Dashboard() {
 
       <ul>
         {organizing.map(date => (
-          <List key={date.title}>
-            <strong>{date.title}</strong>
-            <div>
-              <span>{date.date}</span>
-              <MdKeyboardArrowRight size={20} color="#fff" />
-            </div>
-          </List>
+          <Link to="/details">
+            <List key={date.title}>
+              <strong>{date.title}</strong>
+              <div>
+                <span>{date.date}</span>
+                <MdKeyboardArrowRight size={20} color="#fff" />
+              </div>
+            </List>
+          </Link>
         ))}
       </ul>
     </Container>
