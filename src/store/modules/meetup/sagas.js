@@ -8,7 +8,6 @@ import {
   createMeetupSuccess,
   createMeetupFailure,
   deleteMeetupSuccess,
-  meetupSuccess,
 } from './actions';
 
 export function* createMeetup({ payload }) {
