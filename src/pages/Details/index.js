@@ -18,12 +18,11 @@ export default function Details({ match }) {
 
   const dispatch = useDispatch();
 
+  // verificar se o meetup pertence ao usuário caso contrário não poderá ser listado e retornar um erro
   useEffect(() => {
     async function loadMeetup() {
       try {
         const response = await api.get(`meetups/${id}`);
-
-        console.tron.log(response.data);
 
         const {
           date,
@@ -41,7 +40,6 @@ export default function Details({ match }) {
 
         const data = Object.assign({ formattedDate, url, path }, rest);
 
-        console.tron.log('@data', data);
         setItem(data);
       } catch (err) {
         console.tron.log('erro');
