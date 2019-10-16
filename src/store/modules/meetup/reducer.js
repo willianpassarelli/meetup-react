@@ -11,6 +11,10 @@ export default function meetup(state = INITIAL_STATE, action) {
         draft.meetup = action.payload.meetup;
         break;
       }
+      case '@meetup/DELETE_MEETUP_SUCCESS': {
+        draft.meetup = null;
+        break;
+      }
       default:
     }
   });

@@ -6,7 +6,6 @@ import pt from 'date-fns/locale/pt';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import Button from '~/components/Button';
-
 import api from '~/services/api';
 
 import { Container, List } from './styles';
@@ -43,7 +42,7 @@ export default function Dashboard() {
 
       <ul>
         {organizing.map(date => (
-          <Link to="/details">
+          <Link to={`/details/${date.id}`}>
             <List key={date.title}>
               <strong>{date.title}</strong>
               <div>

@@ -1,15 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { MdEdit, MdDeleteForever, MdLocationOn } from 'react-icons/md';
 import { IoMdCalendar } from 'react-icons/all';
 
-import { Container, Header, Infos } from './styles';
+import { useDispatch } from 'react-redux';
 
-export default function Details() {
+import api from '~/services/api';
+
+import { Container, Header, Infos } from './styles';
+import { deleteMeetupRequest } from '~/store/modules/meetup/actions';
+
+export default function Details({ match }) {
+  const [item, setItem] = useState({});
+  const { id } = match.params;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function loadMeetup() {
+      try {
+        const response = await api.get(`meetups/${id}`);
+
+        console.tron.log(response.data);
+
+        const {
+          date,
+          banner: { url, path },
+          ...rest
+        } = response.data;
+
+        const formattedDate = format(
+          parseISO(date),
+          "d 'de' MMMM', às' HH'h'",
+          {
+            locale: pt,
+          }
+        );
+
+        const data = Object.assign({ formattedDate, url, path }, rest);
+
+        console.tron.log('@data', data);
+        setItem(data);
+      } catch (err) {
+        console.tron.log('erro');
+      }
+    }
+    loadMeetup();
+  }, []);
+
+  function cancelMeetup() {
+    dispatch(deleteMeetupRequest(item.id));
+  }
+
   return (
     <Container>
       <Header>
-        <strong>Meetup de React Native</strong>
+        <strong>{item.title}</strong>
         <div>
           <button type="submit">
             <div>
@@ -18,7 +66,7 @@ export default function Details() {
             </div>
           </button>
           <span>
-            <button type="submit">
+            <button type="submit" onClick={cancelMeetup}>
               <div>
                 <MdDeleteForever size={20} color="#fff" />
                 <strong>Cancelar</strong>
@@ -28,25 +76,17 @@ export default function Details() {
         </div>
       </Header>
       <Infos>
-        <img src="https://camunda.com/img/events/meetup-example.jpg" alt="" />
-        <p>
-          O Meetup de React Native é um evento que reúne a comunidade de
-          desenvolvimento mobile utilizando React a fim de compartilhar
-          conhecimento. Todos são convidados.
-          <br />
-          <br />
-          Caso queira participar como palestrante do meetup envie um e-mail para
-          organizacao@meetuprn.com.br.
-        </p>
+        <img src={item.url} alt={item.path} />
+        <p>{item.description}</p>
 
         <span>
           <div>
             <IoMdCalendar size={20} />
-            <strong>24 de Junho, ás 20h</strong>
+            <strong>{item.formattedDate}</strong>
           </div>
           <div>
             <MdLocationOn size={20} />
-            <strong>Rua Guilherme Gembala, 260</strong>
+            <strong>{item.location}</strong>
           </div>
         </span>
       </Infos>

@@ -4,7 +4,12 @@ import { toast } from 'react-toastify';
 import history from '~/services/history';
 import api from '~/services/api';
 
-import { createMeetupSuccess, createMeetupFailure } from './actions';
+import {
+  createMeetupSuccess,
+  createMeetupFailure,
+  deleteMeetupSuccess,
+  meetupSuccess,
+} from './actions';
 
 export function* createMeetup({ payload }) {
   try {
@@ -23,4 +28,21 @@ export function* createMeetup({ payload }) {
   }
 }
 
-export default all([takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup)]);
+export function* deleteMeetup({ payload }) {
+  try {
+    yield call(api.delete, `meetups/${payload.id}`);
+
+    toast.success('Meetup cancelada com sucesso!');
+
+    history.push('/dashboard');
+
+    yield put(deleteMeetupSuccess());
+  } catch (err) {
+    toast.error('Não foi possivel cancelar esta Meetup');
+  }
+}
+
+export default all([
+  takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
+  takeLatest('@meetup/DELETE_MEETUP_REQUEST', deleteMeetup),
+]);
