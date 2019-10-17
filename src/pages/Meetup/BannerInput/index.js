@@ -7,11 +7,11 @@ import api from '~/services/api';
 
 import { Container } from './styles';
 
-export default function BannerInput() {
+export default function BannerInput({ value }) {
   const { defaultValue, registerField } = useField('banner');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
-  const [preview, setPreview] = useState(defaultValue && defaultValue.url);
+  const [preview, setPreview] = useState(value && value.url);
 
   const ref = useRef(null);
 
