@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { useField } from '@rocketseat/unform';
 import { MdCameraAlt } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -62,3 +64,11 @@ export default function BannerInput({ value }) {
     </Container>
   );
 }
+
+BannerInput.propTypes = {
+  value: PropTypes.instanceOf(Object),
+};
+
+BannerInput.defaultProps = {
+  value: PropTypes.object,
+};

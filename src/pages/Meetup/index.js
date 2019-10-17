@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 
@@ -32,13 +34,13 @@ export default function Meetup({ history }) {
   }
 
   function handleEdit(data) {
-    dispatch(editMeetupRequest(data));
+    dispatch(editMeetupRequest(meetup.id, data));
   }
 
   return (
     <Container>
       <Form
-        schema={schema}
+        schema={!meetup && schema}
         onSubmit={meetup ? handleEdit : handleSubmit}
         initialData={meetup}
       >
@@ -57,3 +59,11 @@ export default function Meetup({ history }) {
     </Container>
   );
 }
+
+Meetup.propTypes = {
+  history: PropTypes.instanceOf(Object),
+};
+
+Meetup.defaultProps = {
+  history: PropTypes.object,
+};

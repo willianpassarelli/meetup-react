@@ -40,6 +40,8 @@ export const List = styled.li`
   padding: 20px 30px;
   transition: background 0.2s;
 
+  opacity: ${props => (props.past ? 0.6 : 1)};
+
   cursor: pointer;
 
   &:hover {
