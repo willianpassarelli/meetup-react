@@ -34,8 +34,16 @@ export const Header = styled.header`
       font-size: 16px;
       transition: background 0.2s;
 
+      :disabled {
+        background: #999;
+      }
+
       &:hover {
         background: ${darken(0.09, '#4DBAF9')};
+
+        :disabled {
+          background: ${darken(0.09, '#999')};
+        }
       }
 
       div {

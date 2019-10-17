@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import PropTypes from 'prop-types';
 
-import { MdEdit, MdDeleteForever, MdLocationOn } from 'react-icons/md';
-import { IoMdCalendar } from 'react-icons/all';
+import {
+  IoMdCalendar,
+  MdEdit,
+  MdDeleteForever,
+  MdLocationOn,
+} from 'react-icons/all';
 
 import { useDispatch } from 'react-redux';
 
 import history from '~/services/history';
 import api from '~/services/api';
 
-import { Container, Header, Infos } from './styles';
 import { deleteMeetupRequest } from '~/store/modules/meetup/actions';
+import { Container, Header, Infos } from './styles';
 
 export default function Details({ match }) {
   const [item, setItem] = useState({});
@@ -66,14 +71,22 @@ export default function Details({ match }) {
       <Header>
         <strong>{item.title}</strong>
         <div>
-          <button type="submit" onClick={() => handleEditMeetup(item)}>
+          <button
+            type="submit"
+            disabled={item.past}
+            onClick={() => handleEditMeetup(item)}
+          >
             <div>
               <MdEdit size={20} color="#fff" />
               <strong>Editar</strong>
             </div>
           </button>
           <span>
-            <button type="submit" onClick={handleCancelMeetup}>
+            <button
+              type="submit"
+              disabled={item.past}
+              onClick={handleCancelMeetup}
+            >
               <div>
                 <MdDeleteForever size={20} color="#fff" />
                 <strong>Cancelar</strong>
@@ -99,3 +112,11 @@ export default function Details({ match }) {
     </Container>
   );
 }
+
+Details.propTypes = {
+  match: PropTypes.instanceOf(Object),
+};
+
+Details.defaultProps = {
+  match: PropTypes.object,
+};

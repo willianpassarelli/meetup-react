@@ -8,6 +8,7 @@ import {
   createMeetupSuccess,
   createMeetupFailure,
   deleteMeetupSuccess,
+  editMeetupSuccess,
 } from './actions';
 
 export function* createMeetup({ payload }) {
@@ -43,10 +44,16 @@ export function* deleteMeetup({ payload }) {
 
 export function* editMeetup({ payload }) {
   try {
-    console.tron.log(payload);
-    yield call(api.put, `meetups/${payload.id}`, payload);
+    yield call(api.put, `meetups/${payload.id}`, payload.data);
+
+    toast.success('Meetup atualizada com sucesso!');
+
+    history.push('/dashboard');
+
+    yield put(editMeetupSuccess());
   } catch (err) {
-    console.tron.log('error');
+    toast.success('Erro ao atualizar Meetup');
+    console.tron.log('error', err);
   }
 }
 

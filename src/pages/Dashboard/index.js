@@ -43,7 +43,7 @@ export default function Dashboard() {
       <ul>
         {organizing.map(date => (
           <Link to={`/details/${date.id}`} key={date.title}>
-            <List>
+            <List past={date.past}>
               <strong>{date.title}</strong>
               <div>
                 <span>{date.date}</span>

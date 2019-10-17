@@ -1,7 +1,7 @@
-export function editMeetupRequest(data) {
+export function editMeetupRequest(id, data) {
   return {
     type: '@meetup/EDIT_MEETUP_REQUEST',
-    payload: { data },
+    payload: { id, data },
   };
 }
 
