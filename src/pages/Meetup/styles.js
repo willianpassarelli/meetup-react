@@ -19,6 +19,10 @@ export const Container = styled.div`
       font-weight: 700;
       border-radius: 4px;
       background: rgba(0, 0, 0, 0.1);
+
+      &:focus {
+        border-left: 2px solid #d44059;
+      }
     }
 
     textarea {
@@ -31,6 +35,10 @@ export const Container = styled.div`
       margin: 0 0 10px;
       font-weight: 700;
       resize: none;
+
+      &:focus {
+        border-left: 2px solid #d44059;
+      }
     }
 
     span {

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
 
 export const Container = styled.div`
   max-width: 940px;
@@ -44,7 +43,7 @@ export const List = styled.li`
   cursor: pointer;
 
   &:hover {
-    background: ${lighten(0.05, 'rgba(0, 0, 0, 0.1)')};
+    border-left: 2px solid #d44059;
   }
 
   & + li {
