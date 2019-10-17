@@ -6,7 +6,7 @@ import { MdEdit, MdDeleteForever, MdLocationOn } from 'react-icons/md';
 import { IoMdCalendar } from 'react-icons/all';
 
 import { useDispatch } from 'react-redux';
-
+import history from '~/services/history';
 import api from '~/services/api';
 
 import { Container, Header, Infos } from './styles';
@@ -18,7 +18,6 @@ export default function Details({ match }) {
 
   const dispatch = useDispatch();
 
-  // verificar se o meetup pertence ao usuário caso contrário não poderá ser listado e retornar um erro
   useEffect(() => {
     async function loadMeetup() {
       try {
@@ -42,7 +41,7 @@ export default function Details({ match }) {
 
         setItem(data);
       } catch (err) {
-        console.tron.log('erro');
+        history.push('/error');
       }
     }
     loadMeetup();
@@ -76,7 +75,6 @@ export default function Details({ match }) {
       <Infos>
         <img src={item.url} alt={item.path} />
         <p>{item.description}</p>
-
         <span>
           <div>
             <IoMdCalendar size={20} />

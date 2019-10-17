@@ -8,6 +8,7 @@ import Dashboard from '~/pages/Dashboard';
 import Profile from '~/pages/Profile';
 import Details from '~/pages/Details';
 import Meetup from '~/pages/Meetup';
+import Error from '~/pages/Error';
 
 export default function Routes() {
   return (
@@ -15,6 +16,7 @@ export default function Routes() {
       <Route path="/" exact component={SignIn} />
       <Route path="/register" component={SignUp} />
 
+      <Route path="/error" component={Error} isPrivate />
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/details/:id" component={Details} isPrivate />

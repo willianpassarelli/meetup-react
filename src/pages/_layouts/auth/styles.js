@@ -28,6 +28,10 @@ export const Content = styled.div`
       color: #fff;
       margin: 0 0 10px;
       font-weight: 700;
+
+      &:focus {
+        border-left: 2px solid #d44059;
+      }
     }
 
     button {

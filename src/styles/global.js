@@ -19,6 +19,20 @@ export default createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+
+    .Toastify__toast--success {
+      background: #77dd77;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font: 14px Roboto, sans-serif;
+    }
+
+    .Toastify__toast--error {
+      background: #d44059;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font: 14px Roboto, sans-serif;
+    }
   }
 
   body {
