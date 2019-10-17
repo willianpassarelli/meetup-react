@@ -1,3 +1,16 @@
+export function editMeetupRequest(data) {
+  return {
+    type: '@meetup/EDIT_MEETUP_REQUEST',
+    payload: { data },
+  };
+}
+
+export function editMeetupSuccess() {
+  return {
+    type: '@meetup/EDIT_MEETUP_SUCCESS',
+  };
+}
+
 export function deleteMeetupRequest(id) {
   return {
     type: '@meetup/DELETE_MEETUP_REQUEST',
@@ -27,6 +40,6 @@ export function createMeetupSuccess(meetup) {
 
 export function createMeetupFailure() {
   return {
-    type: '@meetup/UPDATE_PROFILE_FAILURE',
+    type: '@meetup/CREATE_MEETUP_FAILURE',
   };
 }

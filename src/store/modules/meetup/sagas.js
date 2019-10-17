@@ -41,7 +41,17 @@ export function* deleteMeetup({ payload }) {
   }
 }
 
+export function* editMeetup({ payload }) {
+  try {
+    console.tron.log(payload);
+    yield call(api.put, `meetups/${payload.id}`, payload);
+  } catch (err) {
+    console.tron.log('error');
+  }
+}
+
 export default all([
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/DELETE_MEETUP_REQUEST', deleteMeetup),
+  takeLatest('@meetup/EDIT_MEETUP_REQUEST', editMeetup),
 ]);

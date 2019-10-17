@@ -6,6 +6,7 @@ import { MdEdit, MdDeleteForever, MdLocationOn } from 'react-icons/md';
 import { IoMdCalendar } from 'react-icons/all';
 
 import { useDispatch } from 'react-redux';
+
 import history from '~/services/history';
 import api from '~/services/api';
 
@@ -37,7 +38,12 @@ export default function Details({ match }) {
           }
         );
 
-        const data = Object.assign({ formattedDate, url, path }, rest);
+        const data = Object.assign(rest, {
+          formattedDate,
+          date: parseISO(date),
+          url,
+          path,
+        });
 
         setItem(data);
       } catch (err) {
@@ -45,10 +51,14 @@ export default function Details({ match }) {
       }
     }
     loadMeetup();
-  }, []);
+  }, [id]);
 
-  function cancelMeetup() {
+  function handleCancelMeetup() {
     dispatch(deleteMeetupRequest(item.id));
+  }
+
+  function handleEditMeetup(data) {
+    history.push('/meetup', { ...data });
   }
 
   return (
@@ -56,14 +66,14 @@ export default function Details({ match }) {
       <Header>
         <strong>{item.title}</strong>
         <div>
-          <button type="submit">
+          <button type="submit" onClick={() => handleEditMeetup(item)}>
             <div>
               <MdEdit size={20} color="#fff" />
               <strong>Editar</strong>
             </div>
           </button>
           <span>
-            <button type="submit" onClick={cancelMeetup}>
+            <button type="submit" onClick={handleCancelMeetup}>
               <div>
                 <MdDeleteForever size={20} color="#fff" />
                 <strong>Cancelar</strong>
